@@ -1,0 +1,764 @@
+/* Variáveis de Cores */
+:root {
+    --primary-color: #007bff; /* Azul (pode ser ajustado) */
+    --secondary-color: #0a1128; /* Azul escuro principal */
+    --accent-color: #61DAFB; /* Azul claro para destaques */
+    --text-color: #f0f0f0; /* Cor do texto claro */
+    --light-text-color: #a0a0a0; /* Cor do texto secundário */
+    --bg-color: #0a1128; /* Cor de fundo principal */
+    --card-bg-color: #1a223a; /* Cor de fundo para cards */
+    --border-color: #3b455b;
+}
+
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    overflow-x: hidden; /* Evita scroll horizontal indesejado */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Botões */
+.btn-primary {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Um tom mais escuro */
+    transform: translateY(-2px);
+}
+
+/* Destaque (cores) */
+.highlight {
+    color: var(--accent-color);
+}
+
+.section-subtitle {
+    text-transform: uppercase;
+    color: var(--primary-color);
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    text-align: center;
+    color: #fff;
+}
+
+/* Header (Navegação) */
+.header {
+    background-color: var(--secondary-color);
+    padding: 20px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.header.scrolled {
+    background-color: rgba(10, 17, 40, 0.95); /* Levemente mais opaco ao rolar */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, var(--secondary-color) 0%, #060b1b 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 100px; /* Para não ficar abaixo do header fixo */
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 200px;
+    height: 200px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 0;
+}
+
+.hero-section::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    width: 150px;
+    height: 150px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    filter: blur(60px);
+    z-index: 0;
+}
+
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-text {
+    flex: 1;
+    text-align: left;
+}
+
+.hero-text p {
+    font-size: 1.1rem;
+    color: var(--light-text-color);
+    margin-bottom: 15px;
+}
+
+.hero-text h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    color: #fff;
+    text-align: left; /* Alinhamento à esquerda */
+    line-height: 1.1;
+}
+
+.hero-text h2 {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    color: var(--accent-color);
+    text-align: left; /* Alinhamento à esquerda */
+    font-weight: 600;
+}
+
+/* Estilo para o cursor de digitação do Typed.js */
+.typed-text-output .typed-cursor {
+    opacity: 1;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+}
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+
+.hero-image {
+    flex: 0 0 450px; /* Largura fixa para a imagem */
+    height: 550px; /* Altura fixa para a imagem */
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    background-color: #1e293b; /* Fundo para a imagem */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem cubra o espaço */
+    object-position: top; /* Ajusta a posição para o topo */
+}
+
+.social-links {
+    margin: 30px 0;
+    display: flex;
+    gap: 20px;
+}
+
+.social-links a {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+
+/* About Section */
+.about-section {
+    padding: 100px 0;
+    background-color: var(--bg-color);
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 70px;
+}
+
+.about-image {
+    flex: 0 0 450px;
+    height: 550px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    background-color: #1e293b;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    color: var(--light-text-color);
+    margin-bottom: 20px;
+}
+
+.about-text h2 {
+    text-align: left;
+    margin-bottom: 25px;
+    font-size: 2.3rem;
+}
+
+.about-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.stat-item span {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.stat-item p {
+    font-size: 0.9rem;
+    color: var(--light-text-color);
+    margin: 0;
+}
+
+/* Certifications Section */
+.certifications-section {
+    padding: 100px 0;
+    background-color: var(--secondary-color);
+    text-align: center;
+}
+
+.certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.certification-item {
+    background-color: var(--card-bg-color);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.certification-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+}
+
+.certification-item img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 20px auto;
+    border: 3px solid var(--primary-color);
+}
+
+.certification-item h3 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.certification-item p {
+    color: var(--light-text-color);
+    font-size: 0.95rem;
+}
+
+
+/* Offerings Section */
+.offerings-section {
+    padding: 100px 0;
+    background-color: var(--bg-color);
+    text-align: center;
+}
+
+.offerings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.offering-item {
+    background-color: var(--card-bg-color);
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    border: 1px solid var(--border-color);
+}
+
+.offering-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+}
+
+.offering-item i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.offering-item h3 {
+    font-size: 1.6rem;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.offering-item p {
+    color: var(--light-text-color);
+    font-size: 0.95rem;
+}
+
+
+/* Contact Section (Atualizada) */
+.contact-section {
+    padding: 100px 0;
+    background-color: var(--secondary-color);
+    text-align: center;
+}
+
+.contact-content-single { /* Novo container para centralizar o card */
+    display: flex;
+    justify-content: center; /* Centraliza o card horizontalmente */
+    margin-top: 50px;
+}
+
+.contact-card-centered { /* Novo card que substitui as duas colunas */
+    background-color: var(--card-bg-color);
+    padding: 60px 50px; /* AUMENTADO: Mais padding interno para espaçamento */
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Sombra mais forte */
+    text-align: center; /* Centraliza o texto dentro do card */
+    max-width: 800px; /* Aumentado um pouco a largura máxima */
+    width: 100%; /* Ocupa a largura total disponível dentro do max-width */
+    border: 1px solid var(--border-color);
+    position: relative; /* Para posicionar os ícones decorativos */
+    overflow: hidden; /* Garante que os ícones fiquem dentro se passarem do limite */
+}
+
+/* Estilos para os ícones decorativos no topo do card */
+.contact-header-icons {
+    position: absolute; /* Posição absoluta para flutuar no topo */
+    top: 20px; /* Distância do topo */
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center; /* Centraliza os ícones */
+    gap: 25px; /* Espaçamento entre os ícones */
+    margin-bottom: 30px; /* Espaçamento entre os ícones e o texto */
+    color: var(--accent-color); /* Cor dos ícones */
+    opacity: 0.7; /* Suaviza a cor */
+}
+
+.contact-header-icons i {
+    font-size: 3rem; /* Tamanho dos ícones decorativos */
+    animation: bounceIn 1s ease-out forwards; /* Animação de entrada */
+    opacity: 0; /* Começa invisível para a animação */
+}
+
+.contact-header-icons i:nth-child(2) { animation-delay: 0.2s; }
+.contact-header-icons i:nth-child(3) { animation-delay: 0.4s; }
+
+/* Animação para os ícones decorativos */
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mantém os estilos gerais de seção e títulos */
+/* Note: section-subtitle e h2 são globais e já estão definidos acima */
+
+.contact-intro-text {
+    font-size: 1.15rem;
+    color: var(--light-text-color);
+    margin-bottom: 40px; /* AUMENTADO: Mais espaço abaixo do texto introdutório */
+    line-height: 1.8;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 60px; /* Espaço para os ícones do header */
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px; /* AUMENTADO: Mais espaço entre os itens de info */
+}
+
+.info-item i {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-right: 20px; /* AUMENTADO: Mais espaço entre ícone e texto */
+    width: 35px;
+    text-align: center;
+}
+
+.info-item p {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.contact-card-centered h3 {
+    font-size: 2rem; /* Levemente maior */
+    color: #fff;
+    margin-top: 50px; /* AUMENTADO: Mais espaço antes do título de redes sociais */
+    margin-bottom: 20px; /* AUMENTADO: Mais espaço abaixo do título */
+}
+
+.social-prompt {
+    font-size: 1rem;
+    color: var(--light-text-color);
+    margin-bottom: 30px; /* AUMENTADO: Mais espaço */
+}
+
+.social-links-big {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px; /* AUMENTADO: Mais espaço entre os ícones grandes */
+    margin-bottom: 50px; /* AUMENTADO: Mais espaço antes do call-to-action */
+}
+
+.social-links-big a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links-big a i {
+    font-size: 5rem; /* Ícones AINDA MAIORES para destaque */
+    margin-bottom: 12px; /* Mais espaço entre ícone e texto */
+    color: var(--accent-color);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links-big a:hover {
+    color: var(--primary-color);
+    transform: translateY(-10px); /* Efeito de flutuação mais evidente */
+}
+
+.social-links-big a:hover i {
+    color: var(--primary-color);
+}
+
+.call-to-action {
+    font-size: 1.3rem; /* Um pouco maior */
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-top: 30px; /* Mais espaço */
+}
+
+/* Footer */
+.footer {
+    background-color: #060b1b;
+    color: var(--light-text-color);
+    text-align: center;
+    padding: 30px 0;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Estilos para o efeito de "reveal" com Intersection Observer */
+.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .hero-content,
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 50px;
+    }
+
+    .hero-text,
+    .about-text {
+        text-align: center;
+    }
+
+    .hero-text h1,
+    .hero-text h2,
+    .about-text h2 {
+        text-align: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .hero-image,
+    .about-image {
+        flex: none; /* Remove flex-basis para se ajustar melhor */
+        max-width: 400px; /* Limita o tamanho em telas menores */
+        height: 500px;
+        margin: 0 auto;
+    }
+
+    .navbar .nav-links {
+        display: none; /* Esconde links em telas menores, pode adicionar um menu hambúrguer com JS */
+    }
+
+    .navbar .btn-primary {
+        margin-left: auto; /* Alinha o botão à direita se os links sumirem */
+    }
+
+    /* Ajustes para o card de contato em telas menores */
+    .contact-card-centered {
+        padding: 50px 40px; /* Ajusta padding em telas menores */
+        max-width: 700px; /* Ajusta max-width */
+    }
+
+    .contact-intro-text {
+        padding-top: 50px; /* Ajusta o padding de topo */
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.8rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .hero-text h2 {
+        font-size: 1.8rem;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    .stat-item span {
+        font-size: 2rem;
+    }
+
+    .about-stats {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    /* Ajustes para o card de contato em telas menores */
+    .contact-card-centered {
+        padding: 40px 30px; /* Reduz padding em telas menores */
+    }
+    .contact-intro-text {
+        padding-top: 40px; /* Ajusta o padding de topo */
+    }
+    .contact-header-icons i {
+        font-size: 2.5rem;
+    }
+    .social-links-big {
+        gap: 30px;
+    }
+    .social-links-big a i {
+        font-size: 4rem;
+    }
+    .info-item i {
+        font-size: 1.5rem;
+        margin-right: 10px;
+    }
+    .info-item p {
+        font-size: 1rem;
+    }
+    .contact-card-centered h3 {
+        font-size: 1.6rem;
+    }
+    .social-prompt, .call-to-action {
+        font-size: 0.95rem;
+    }
+    .contact-intro-text {
+        font-size: 1.05rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar .logo {
+        font-size: 1.5rem;
+    }
+
+    .btn-primary {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .hero-text h2 {
+        font-size: 1.5rem;
+    }
+
+    .hero-image,
+    .about-image {
+        height: 400px;
+        max-width: 300px;
+    }
+
+    .hero-section,
+    .about-section,
+    .certifications-section,
+    .offerings-section,
+    .contact-section {
+        padding: 60px 0;
+    }
+
+    /* Ajustes para o card de contato em telas muito pequenas */
+    .contact-card-centered {
+        padding: 30px 20px;
+    }
+    .contact-intro-text {
+        padding-top: 30px;
+    }
+    .contact-header-icons {
+        top: 15px;
+        gap: 15px;
+    }
+    .contact-header-icons i {
+        font-size: 2rem;
+    }
+    .social-links-big {
+        gap: 20px;
+    }
+    .social-links-big a i {
+        font-size: 3.5rem;
+    }
+    .contact-card-centered h3 {
+        font-size: 1.4rem;
+    }
+}
